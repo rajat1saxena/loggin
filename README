@@ -1,0 +1,3 @@
+This is a simple plug and play system based on django and meant to work with other websites built using django framework.
+
+It can provide your website with simple user sign-up and log-in/log-out services just like you see on various sites.However the system cannot be used as a full fledge user management system as it's far from complete.
