@@ -1,0 +1,13 @@
+{% if error_message %}
+ <h3><strong>{{ error_message }}</strong></h3>
+{% endif %}
+<form action="/loggin/signin/" method='post'>{% csrf_token %}
+    <label for="username">Username</label>
+	<input type="text" name=username />
+	<label for="password">Password</label>
+	<input type="text" name=password />
+	<input type="submit" value="Submit" />
+</form>
+<p>
+	<h3>No Account?</h3><a href="/loggin/signup/">SignUp</a>
+</p>

@@ -1,0 +1,8 @@
+<h1>Users Page</h1>
+<h3>
+{% if lol.is_anonymous %}
+ <a href="/loggin/signin/">SignIn</a>
+{% else %}
+ {{ lol.username }}| <a href="/loggin/signout">SignOut</a>
+{% endif %}
+</h3>

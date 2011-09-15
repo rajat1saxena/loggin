@@ -13,11 +13,11 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect
 
 def home(request):
-	return render_to_response('loggin/home.html',{'lol': request.user })
+	return render_to_response('home.html',{'lol': request.user })
 
 def signin(request):
 	if request.user.is_authenticated():
-		return render_to_response('loggin/alert.html',{'user':request.user})
+		return render_to_response('alert.html',{'user':request.user})
 	error_message=""
 	if request.method == 'POST':
 		username=request.POST['username']
@@ -31,7 +31,7 @@ def signin(request):
 				error_message = "Sorry!your account is diabled"
 		else:
 			error_message="Username/Password don't match"
-	return render_to_response('loggin/signin.html',{'error_message':error_message},context_instance=RequestContext(request))
+	return render_to_response('signin.html',{'error_message':error_message},context_instance=RequestContext(request))
 
 def signout(request):
 	logout(request)
@@ -39,7 +39,7 @@ def signout(request):
 
 def signup(request):
 	if request.user.is_authenticated():
-		return render_to_response('loggin/alert.html',{'user':request.user})
+		return render_to_response('alert.html',{'user':request.user})
 	if request.method == 'POST':
 		form=SignupForm(request.POST)   #a bound form
 		if form.is_valid():
@@ -68,7 +68,7 @@ def signup(request):
 	else:
 		form=SignupForm()
 
-	return render_to_response('loggin/signup.html',{'form':form},context_instance=RequestContext(request))
+	return render_to_response('signup.html',{'form':form},context_instance=RequestContext(request))
 
 def thanks(request):
 	return render_to_response('loggin/thanks.html',{})
