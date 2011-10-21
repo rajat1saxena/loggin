@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns("",
-				(r'^$','loggin.views.home'),
+				url(r'^$','loggin.views.home',name='main-page'),
 				(r'^signin/$','loggin.views.signin'),
 				(r'^signout/$','loggin.views.signout'),
 				(r'^signup/$','loggin.views.signup'),
-				(r'^thanks','loggin.views.thanks'),
+				(r'^thanks/$','loggin.views.thanks'),
 				)

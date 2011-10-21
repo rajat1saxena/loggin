@@ -11,9 +11,12 @@ from loggin.models import SignupForm,userinfo
 #other imports
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_http_methods
 
+@require_http_methods(["GET","POST"])
 def home(request):
-	return render_to_response('home.html',{'lol': request.user })
+	info = userinfo.objects.get(user = request.user )
+	return render_to_response('home.html',{'lol': request.user,'info': info})
 
 def signin(request):
 	if request.user.is_authenticated():
@@ -28,7 +31,7 @@ def signin(request):
 				login(request,user)
 				return HttpResponseRedirect('/loggin/')
 			else:
-				error_message = "Sorry!your account is diabled"
+				error_message = "Sorry!your account is disabled"
 		else:
 			error_message="Username/Password don't match"
 	return render_to_response('signin.html',{'error_message':error_message},context_instance=RequestContext(request))
@@ -71,4 +74,4 @@ def signup(request):
 	return render_to_response('signup.html',{'form':form},context_instance=RequestContext(request))
 
 def thanks(request):
-	return render_to_response('loggin/thanks.html',{})
+	return render_to_response('thanks.html',{})

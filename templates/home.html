@@ -1,8 +1,24 @@
+<head><title>Accounts</title></head>
 <h1>Users Page</h1>
 <h3>
 {% if lol.is_anonymous %}
  <a href="/loggin/signin/">SignIn</a>
 {% else %}
  {{ lol.username }}| <a href="/loggin/signout">SignOut</a>
+ <!--the following three lines are for coupling loggin app with bookmarking app-->
+ <br>
+ <article>
+ 	<header>
+ 		<h3>User Details</h3>
+ 	</header><!-- /header -->
+ 	<p>
+ 		Email: <a href="mailto:{{ lol.email }}">{{ lol.email }}</a><br>
+ 		Country: {{ info.country }}<br>
+ 		Age: {{ info.age }}
+ 	</p>
+ </article>
+ <br>
+ <a href="/bookmarks">Go to my bookmarks</a>
+ <!--The above 3 lines should be removed if you're using loggin app without bookmarking app-->
 {% endif %}
 </h3>
