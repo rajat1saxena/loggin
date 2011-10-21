@@ -15,7 +15,12 @@ from django.views.decorators.http import require_http_methods
 
 @require_http_methods(["GET","POST"])
 def home(request):
-	info = userinfo.objects.get(user = request.user )
+	info = None
+	if not request.user.is_anonymous():
+		try:
+			info = userinfo.objects.get(user = request.user)
+		except:
+			pass
 	return render_to_response('home.html',{'lol': request.user,'info': info})
 
 def signin(request):
